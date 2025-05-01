@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Play Kristna - DOS Game</title>
+  <link rel="stylesheet" href="https://js-dos.com/7.4.0/js-dos.css">
   <script src="https://js-dos.com/7.4.0/js-dos.js"></script>
   <style>
     body {
@@ -26,11 +27,17 @@
 <body>
   <h1>Patience - Classic DOS Game</h1>
   <div id="dosbox"></div>
-
+  
+<!-- 
   <script>
     Dos(document.getElementById("dosbox"), {
       bundleUrl: "kirsta/patience/kca1.zip"
     });
+  </script> -->
+
+  <script>
+    Dos(document.getElementById("dosbox")).run("kirsta/patience/kca1.jsdos");
   </script>
+
 </body>
 </html>
