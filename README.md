@@ -1,2 +1,2 @@
 # AdventureGame
-KCA1 website emulator of old Krishna DOS games
+KCA1 website emulator of old Kirsta DOS games
