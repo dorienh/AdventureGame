@@ -30,24 +30,12 @@
 <body>
   <h1>KCA1 - Classic DOS Game</h1>
   
-  <div id="game-list">
-    <button onclick="loadGame('kca1.jsdos')">Play KCA1</button>
-  </div>
-
   <div id="dosbox"></div>
-  
   
 
   <script>
-    function loadGame(path) {
-      if (dosInstance) dosInstance.stop();
-      dosInstance = Dos(document.getElementById("dosbox"));
-      dosInstance.run(path);
-    }
-
+    Dos(document.getElementById("dosbox")).run("kirsta/patience/kca1.jsdos");
   </script>
-  <!-- Dos(document.getElementById("dosbox")).run("kca1.jsdos"); -->
-  <!-- <img src="thumbnail.png" alt="Patience" onclick="loadGame('kca1.jsdos')" style="cursor:pointer;"> -->
 
 </body>
 </html>
