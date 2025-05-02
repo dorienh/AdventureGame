@@ -31,24 +31,21 @@
   <h1>Patience - Classic DOS Game</h1>
   <div id="dosbox"></div>
   
-  <!-- <script>
-    const dos = new Dos(document.getElementById("dosbox"), { 
-      wdosboxUrl: "https://v8.js-dos.com/latest/wdosbox.js" // Required WebAssembly module
-    });
-    dos.ready.then(() => {
-      dos.run("kirsta/patience/kca1.jsdos");
-    }).catch(error => {
-      console.error("Failed to run DOS game:", error);
-    });
-  </script> -->
   <script>
-    const dos = new Dos(document.getElementById("dosbox"), { 
-      wdosboxUrl: "https://v8.js-dos.com/latest/wdosbox.js"
+    // Wait for the JSDOS script to load and initialize
+    window.addEventListener('load', () => {
+      // Check if the JSDOS global object is available (e.g., DosBox or a similar export)
+      if (typeof window.DosBox !== 'undefined') {
+        const dos = new DosBox(document.getElementById("dosbox"), {
+          wdosboxUrl: "https://v8.js-dos.com/latest/wdosbox.js"
+        });
+        dos.run("kirsta/patience/kca1.jsdos").catch(error => {
+          console.error("Failed to run DOS game:", error);
+        });
+      } else {
+        console.error("JSDOS v8 API (DosBox) not found. Check the script URL.");
+      }
     });
-    fetch("kirsta/patience/kca1.jsdos")
-      .then(response => response.arrayBuffer())
-      .then(bundle => dos.runBundle(bundle))
-      .catch(error => console.error("Failed to run DOS game:", error));
   </script>
   <!-- <script>
     Dos(document.getElementById("dosbox")).run("kirsta/patience/kca1.jsdos");
