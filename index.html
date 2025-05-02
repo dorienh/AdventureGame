@@ -31,11 +31,20 @@
   <h1>Patience - Classic DOS Game</h1>
   <div id="dosbox"></div>
   
-
-
   <script>
-    Dos(document.getElementById("dosbox")).run("kirsta/patience/kca1.jsdos");
+    const dos = new Dos(document.getElementById("dosbox"), { 
+      wdosboxUrl: "https://v8.js-dos.com/latest/wdosbox.js" // Required WebAssembly module
+    });
+    dos.ready.then(() => {
+      dos.run("kirsta/patience/kca1.jsdos");
+    }).catch(error => {
+      console.error("Failed to run DOS game:", error);
+    });
   </script>
+
+  <!-- <script>
+    Dos(document.getElementById("dosbox")).run("kirsta/patience/kca1.jsdos");
+  </script> -->
 
 </body>
 </html>
