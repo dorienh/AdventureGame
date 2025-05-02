@@ -1,2 +1,8 @@
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://v8.js-dos.com blob: data:; style-src 'self' 'unsafe-inline' https://v8.js-dos.com; connect-src 'self' https://v8.js-dos.com blob: data:; worker-src 'self' blob:; child-src 'self' blob:;
+  Content-Security-Policy: 
+  default-src 'self'; 
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://v8.js-dos.com blob: data:; 
+  style-src 'self' 'unsafe-eval' unsafe-inline' https://v8.js-dos.com; 
+  connect-src 'self' https://v8.js-dos.com blob: data:; 
+  worker-src 'self' blob:; 
+  child-src 'self' blob:;
