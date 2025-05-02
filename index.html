@@ -31,25 +31,29 @@
   <h1>Patience - Classic DOS Game</h1>
   <div id="dosbox"></div>
   
-  <!-- <script>
-    // Wait for the JSDOS script to load and initialize
+  <script>
     window.addEventListener('load', () => {
-      // Check if the JSDOS global object is available (e.g., DosBox or a similar export)
-      if (typeof window.DosBox !== 'undefined') {
-        const dos = new DosBox(document.getElementById("dosbox"), {
-          wdosboxUrl: "https://v8.js-dos.com/latest/js-dos.js"
+      // Try to detect the JSDOS v8 API
+      if (typeof window.JSDOS !== 'undefined') {
+        const dos = new JSDOS(document.getElementById("dosbox"), {
+        });
+        dos.run("kirsta/patience/kca1.jsdos").catch(error => {
+          console.error("Failed to run DOS game:", error);
+        });
+      } else if (typeof window.Dos !== 'undefined') {
+        const dos = new Dos(document.getElementById("dosbox"), {
         });
         dos.run("kirsta/patience/kca1.jsdos").catch(error => {
           console.error("Failed to run DOS game:", error);
         });
       } else {
-        console.error("JSDOS v8 API (DosBox) not found. Check the script URL.");
+        console.error("JSDOS v8 API not found. Check the script URL or exports.");
       }
     });
-  </script> -->
-  <script>
-    Dos(document.getElementById("dosbox")).run("kirsta/patience/kca1.jsdos");
   </script>
+  <!-- <script>
+    Dos(document.getElementById("dosbox")).run("kirsta/patience/kca1.jsdos");
+  </script> -->
 
 </body>
 </html>
