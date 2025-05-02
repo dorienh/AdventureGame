@@ -37,7 +37,7 @@
       // Check if the JSDOS global object is available (e.g., DosBox or a similar export)
       if (typeof window.DosBox !== 'undefined') {
         const dos = new DosBox(document.getElementById("dosbox"), {
-          wdosboxUrl: "https://v8.js-dos.com/latest/wdosbox.js"
+          wdosboxUrl: "https://v8.js-dos.com/latest/js-dos.js"
         });
         dos.run("kirsta/patience/kca1.jsdos").catch(error => {
           console.error("Failed to run DOS game:", error);
