@@ -2,24 +2,22 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Play Your DOS Game</title>
-  <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
-  <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+  <title>Play Kristna - DOS Game</title>
+<!-- js-dos style sheet -->
+<link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+
+<!-- js-dos -->
+<script src="https://v8.js-dos.com/latest/js-dos.js"></script>
   <style>
     body {
       font-family: sans-serif;
+      text-align: center;
       background-color: #111;
       color: white;
-      text-align: center;
       margin: 0;
     }
-    #dropzone {
-      border: 2px dashed #aaa;
-      padding: 40px;
-      margin: 20px auto;
-      width: 90%;
-      max-width: 600px;
-      background-color: #222;
+    h1 {
+      margin-top: 20px;
     }
     #dosbox {
       width: 90%;
@@ -30,57 +28,26 @@
   </style>
 </head>
 <body>
-
-  <h1>Play Your DOS Game</h1>
-  <p>Drag & drop a <code>.jsdos</code> file below or click to browse.</p>
-
-  <div id="dropzone">Drop your <code>.jsdos</code> file here</div>
-  <input type="file" id="fileInput" accept=".jsdos" style="display:none;" />
+  <h1>KCA1 - Classic DOS Game</h1>
+  
+  <div id="game-list">
+    <button onclick="loadGame('kca1.jsdos')">Play Patience</button>
+  </div>
 
   <div id="dosbox"></div>
+  
+  
 
   <script>
-    const dropzone = document.getElementById('dropzone');
-    const fileInput = document.getElementById('fileInput');
-    const dosboxContainer = document.getElementById('dosbox');
-
-    let dosInstance;
-
-    function runDos(file) {
-      if (dosInstance) {
-        dosInstance.stop();
-      }
-
-      dosInstance = Dos(dosboxContainer);
-      dosInstance.run(file);
+    function loadGame(path) {
+      if (dosInstance) dosInstance.stop();
+      dosInstance = Dos(document.getElementById("dosbox"));
+      dosInstance.run(path);
     }
-
-    dropzone.addEventListener('click', () => fileInput.click());
-
-    fileInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file && file.name.endsWith('.jsdos')) {
-        runDos(file);
-      }
-    });
-
-    dropzone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dropzone.style.borderColor = '#0f0';
-    });
-
-    dropzone.addEventListener('dragleave', () => {
-      dropzone.style.borderColor = '#aaa';
-    });
-
-    dropzone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropzone.style.borderColor = '#aaa';
-      const file = e.dataTransfer.files[0];
-      if (file && file.name.endsWith('.jsdos')) {
-        runDos(file);
-      }
-    });
+    Dos(document.getElementById("dosbox")).run("kca1.jsdos");
   </script>
+  
+  <img src="thumbnail.png" alt="Patience" onclick="loadGame('kca1.jsdos')" style="cursor:pointer;">
+
 </body>
 </html>
