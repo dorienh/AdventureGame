@@ -31,29 +31,10 @@
   <h1>Patience - Classic DOS Game</h1>
   <div id="dosbox"></div>
   
+
   <script>
-    window.addEventListener('load', () => {
-      // Try to detect the JSDOS v8 API
-      if (typeof window.JSDOS !== 'undefined') {
-        const dos = new JSDOS(document.getElementById("dosbox"), {
-        });
-        dos.run("kirsta/patience/kca1.jsdos").catch(error => {
-          console.error("Failed to run DOS game:", error);
-        });
-      } else if (typeof window.Dos !== 'undefined') {
-        const dos = new Dos(document.getElementById("dosbox"), {
-        });
-        dos.run("kirsta/patience/kca1.jsdos").catch(error => {
-          console.error("Failed to run DOS game:", error);
-        });
-      } else {
-        console.error("JSDOS v8 API not found. Check the script URL or exports.");
-      }
-    });
+    Dos(document.getElementById("dosbox")).run("kca1.jsdos");
   </script>
-  <!-- <script>
-    Dos(document.getElementById("dosbox")).run("kirsta/patience/kca1.jsdos");
-  </script> -->
 
 </body>
 </html>
