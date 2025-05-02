@@ -34,9 +34,12 @@
   
 
   <script>
-    Dos(document.getElementById("dosbox")).run("kirsta/patience/kca1.jsdos");
 
-    
+    Dos(document.getElementById("dosbox"), {
+      url: "kca1.jsdos",
+  });
+
+
   </script>
   <!-- const jsdos = DOSBox(document.getElementById('dosbox'));
   jsdos.run('kca1.jsdos'); -->
