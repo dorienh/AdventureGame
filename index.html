@@ -3,11 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Play Kristna - DOS Game</title>
-<!-- js-dos style sheet -->
-<link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
-
-<!-- js-dos -->
-<script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+  <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+  <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
   <style>
     body {
       font-family: sans-serif;
@@ -24,17 +21,30 @@
       max-width: 800px;
       height: 600px;
       margin: 20px auto;
+      border: 2px dashed #fff;
+      line-height: 600px;
     }
   </style>
 </head>
 <body>
-  <h1>Patience2 - Classic DOS Game</h1>
-  <div id="dosbox"></div>
-  
+  <h1>Patience - Classic DOS Game</h1>
+  <div id="dosbox">Drag and drop the kca1.jsdos file here</div>
 
   <script>
-    Dos(document.getElementById("dosbox")).run("kirsta/patience/kca1.jsdos");
+    const el = document.getElementById("dosbox");
+    Dos(el).ready((fs) => {
+      el.ondragover = (e) => { e.preventDefault(); el.style.border = "2px solid #0f0"; };
+      el.ondrop = (e) => {
+        e.preventDefault();
+        el.style.border = "2px dashed #fff";
+        const file = e.dataTransfer.files[0];
+        if (file.name.endsWith(".jsdos")) {
+          fs.run(file);
+        } else {
+          alert("Please drop a .jsdos file.");
+        }
+      };
+    });
   </script>
-
 </body>
 </html>
