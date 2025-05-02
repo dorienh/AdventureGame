@@ -31,7 +31,7 @@
   <h1>Patience - Classic DOS Game</h1>
   <div id="dosbox"></div>
   
-  <script>
+  <!-- <script>
     const dos = new Dos(document.getElementById("dosbox"), { 
       wdosboxUrl: "https://v8.js-dos.com/latest/wdosbox.js" // Required WebAssembly module
     });
@@ -40,8 +40,16 @@
     }).catch(error => {
       console.error("Failed to run DOS game:", error);
     });
+  </script> -->
+  <script>
+    const dos = new Dos(document.getElementById("dosbox"), { 
+      wdosboxUrl: "https://v8.js-dos.com/latest/wdosbox.js"
+    });
+    fetch("kirsta/patience/kca1.jsdos")
+      .then(response => response.arrayBuffer())
+      .then(bundle => dos.runBundle(bundle))
+      .catch(error => console.error("Failed to run DOS game:", error));
   </script>
-
   <!-- <script>
     Dos(document.getElementById("dosbox")).run("kirsta/patience/kca1.jsdos");
   </script> -->
